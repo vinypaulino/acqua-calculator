@@ -1,0 +1,102 @@
+{
+  "metadata": {
+    "document_type": "Plano de Ação - Desenvolvimento de App",
+    "source_files": [],
+    "notes": "Fluxo de desenvolvimento com foco em TDD, Clean Architecture, DDD, SOLID. Interface simples, sem login, com duas funcionalidades principais: cálculo de pace e VO2 máximo."
+  },
+  "context": {
+    "summary": "Plano de desenvolvimento incremental orientado a testes (TDD), dividido em fases para cada funcionalidade, garantindo que cada etapa tenha cobertura de testes e código refatorado antes de avançar.",
+    "key_data_points": [],
+    "events_or_parameters": [],
+    "product_info": {
+      "product_name": "Educação Física App",
+      "version": "1.0.0"
+    }
+  },
+  "contradictions_or_conflicts": [],
+  "errors_or_warnings": [],
+  "plan": [
+    {
+      "stage": "1. Planejamento e Design de Telas",
+      "tasks": [
+        "Definir estrutura visual das 3 telas: Home (calculadoras), Pace e VO2.",
+        "Criar wireframes de baixa fidelidade para validação.",
+        "Especificar os componentes UI reutilizáveis: Botões, Inputs, Cards de resultado.",
+        "Validar a UX de cada fluxo com base nos requisitos: simplicidade e clareza."
+      ],
+      "output": [
+        "Wireframes de 3 telas",
+        "Lista de componentes de UI"
+      ]
+    },
+    {
+      "stage": "2. Setup Inicial do Projeto",
+      "tasks": [
+        "Inicializar projeto Next.js com TypeScript",
+        "Instalar e configurar Jest/Vitest e Testing Library",
+        "Criar estrutura de pastas conforme Clean Architecture",
+        "Criar layout base e estilos globais (Tailwind ou equivalente)"
+      ],
+      "output": [
+        "Projeto Next.js funcional com layout base",
+        "Testes e linting configurados"
+      ]
+    },
+    {
+      "stage": "3. Desenvolvimento da Calculadora de Pace",
+      "tasks": [
+        "Implementar entidade Pace e value objects (Time, Distance)",
+        "Criar UseCase: CalculatePaceUseCase",
+        "Criar repository em memória",
+        "Criar testes unitários para entidade e use case",
+        "Somente após os testes passarem, implementar API Handler",
+        "Criar página `pace/page.tsx` com formulário e componente de resultado",
+        "Testar a página com fluxo completo"
+      ],
+      "output": [
+        "Função de cálculo de pace com testes passando",
+        "Tela funcional de cálculo de pace"
+      ]
+    },
+    {
+      "stage": "4. Desenvolvimento da Calculadora de VO2 (Cooper e Jack Daniels)",
+      "tasks": [
+        "Implementar entidade VO2Max e value objects (VO2Value)",
+        "Criar UseCases: CalculateVO2CooperUseCase e CalculateVO2JackDanielsUseCase",
+        "Criar testes unitários para ambos os use cases e entidades",
+        "Após testes passarem, implementar API handlers",
+        "Criar página `vo2/page.tsx` com opção de escolher fórmula, formulário e componente de resultado",
+        "Testar a página com ambos os fluxos"
+      ],
+      "output": [
+        "Funções de cálculo VO2 com testes passando",
+        "Tela funcional com suporte a 2 fórmulas"
+      ]
+    },
+    {
+      "stage": "5. Integração e Refatoração Geral",
+      "tasks": [
+        "Criar Home page com links para as duas calculadoras",
+        "Melhorar responsividade e acessibilidade",
+        "Refatorar código repetitivo (ex: validação de input, conversão de unidade)",
+        "Adicionar comentários e documentação leve nas principais funções",
+        "Criar testes E2E com fluxos principais"
+      ],
+      "output": [
+        "App completo e funcional",
+        "Código limpo, comentado e testado"
+      ]
+    },
+    {
+      "stage": "6. Preparação para Deploy",
+      "tasks": [
+        "Configurar `vercel.json` ou script de build",
+        "Testar build de produção localmente",
+        "Publicar na Vercel ou outro host de preferência"
+      ],
+      "output": [
+        "App publicado online"
+      ]
+    }
+  ]
+} 

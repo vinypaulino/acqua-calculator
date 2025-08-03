@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "document_type": "System Design - Aplicativo de Educação Física",
+    "source_files": [],
+    "notes": "Primeira versão sem login. Interface simples com duas calculadoras: VO2 Máximo e Pace."
+  },
+  "context": {
+    "summary": "Sistema para cálculo de VO2 Máximo e Pace utilizando Next.js, com arquitetura limpa, princípios de DDD, TDD e SOLID. Os dados são armazenados em memória. O foco está na organização em camadas e separação clara de responsabilidades.",
+    "key_data_points": [
+      {
+        "name": "Pace",
+        "details": "Cálculo: pace = tempo total (em minutos) / distância (em km). Resultado: minutos por quilômetro."
+      },
+      {
+        "name": "VO2 Máximo",
+        "details": "Duas fórmulas principais:\n1. Cooper: VO2 máx = (distância em metros - 504.9) / 44.73\n2. Jack Daniels: VO2 máx = (0.0268 x distância em metros) – 11.3 ou fórmula com velocidade e tempo."
+      }
+    ],
+    "events_or_parameters": [
+      {
+        "event_name": "Calcular Pace",
+        "associated_info": "Requer: tempo em minutos, distância em km. Retorna pace (min/km)."
+      },
+      {
+        "event_name": "Calcular VO2 (Cooper)",
+        "associated_info": "Requer: distância em metros. Retorna VO2 máx estimado."
+      },
+      {
+        "event_name": "Calcular VO2 (Jack Daniels)",
+        "associated_info": "Requer: distância e tempo ou velocidade. Retorna VO2 máx estimado."
+      }
+    ],
+    "product_info": {
+      "product_name": "Educação Física App",
+      "version": "1.0.0"
+    }
+  },
+  "contradictions_or_conflicts": [],
+  "errors_or_warnings": [],
+  "architecture": {
+    "frontend": {
+      "framework": "Next.js (React)",
+      "components": [
+        "HomePage: Lista as calculadoras disponíveis (VO2, Pace)",
+        "PaceCalculatorPage: Formulário com inputs de tempo e distância",
+        "VO2CalculatorPage: Formulário com opção de Cooper ou Jack Daniels",
+        "ResultComponent: Exibe resultado calculado",
+        "UIComponents: Botões, Inputs, Cards, Loader, etc. (uso de Shadcn/UI ou Tailwind)"
+      ]
+    },
+    "backend": {
+      "framework": "Next.js API Routes",
+      "routes": [
+        "/api/calculate/pace",
+        "/api/calculate/vo2/cooper",
+        "/api/calculate/vo2/jackdaniels"
+      ],
+      "services": [
+        "PaceCalculatorService",
+        "VO2CooperService",
+        "VO2JackDanielsService"
+      ],
+      "in_memory_repository": {
+        "CalculationsMemoryRepository": "Armazena os dados temporários das submissões em runtime (por sessão)"
+      }
+    },
+    "domain": {
+      "entities": [
+        "Calculation",
+        "Pace",
+        "VO2Max"
+      ],
+      "value_objects": [
+        "Time",
+        "Distance",
+        "VO2Value"
+      ],
+      "use_cases": [
+        "CalculatePaceUseCase",
+        "CalculateVO2CooperUseCase",
+        "CalculateVO2JackDanielsUseCase"
+      ],
+      "interfaces": [
+        "ICalculationRepository"
+      ]
+    },
+    "application": {
+      "controllers": [
+        "PaceController",
+        "VO2Controller"
+      ],
+      "presenters": [
+        "PacePresenter",
+        "VO2Presenter"
+      ]
+    },
+    "testing": {
+      "unit_tests": [
+        "Calculo de Pace com tempo e distância",
+        "VO2 via fórmula de Cooper com valores fixos",
+        "VO2 via Jack Daniels com velocidade e tempo"
+      ],
+      "tools": [
+        "Vitest ou Jest para testes",
+        "Testing Library para testes de UI"
+      ]
+    },
+    "principles": {
+      "DDD": true,
+      "TDD": true,
+      "SOLID": true,
+      "CleanArchitecture": true
+    }
+  }
+}
+
+// Plano de ação 
