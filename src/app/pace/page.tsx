@@ -44,10 +44,16 @@ export default function PacePage() {
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 via-blue-700 to-green-400 p-4">
       <div className="bg-white/90 rounded-2xl shadow-2xl p-8 max-w-lg w-full flex flex-col items-center">
         <h1 className="text-3xl font-extrabold text-blue-900 mb-2 tracking-tight text-center">Calculadora de Pace</h1>
+        <p className="text-gray-700 text-center mb-4">
+          Informe o tempo total da atividade (em minutos) e a distância percorrida (em quilômetros).<br/>
+          <span className="font-semibold">Fórmula:</span> <span className="font-mono">Pace = Tempo ÷ Distância</span><br/>
+          O resultado será exibido em minutos por quilômetro (min/km).
+        </p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
-          <label className="flex flex-col text-left">
-            Tempo total (em minutos):
+          <div className="flex flex-col text-left">
+            <label htmlFor="tempo" className="font-semibold mb-1 text-gray-800">Tempo total (em minutos):</label>
             <input
+              id="tempo"
               type="number"
               min="0"
               step="any"
@@ -57,10 +63,12 @@ export default function PacePage() {
               placeholder="Ex: 50"
               required
             />
-          </label>
-          <label className="flex flex-col text-left">
-            Distância total (em quilômetros):
+            <span className="text-xs text-gray-600 mt-1">Preencha com o tempo total gasto na atividade, em minutos. Exemplo: 50</span>
+          </div>
+          <div className="flex flex-col text-left">
+            <label htmlFor="distancia" className="font-semibold mb-1 text-gray-800">Distância total (em quilômetros):</label>
             <input
+              id="distancia"
               type="number"
               min="0"
               step="any"
@@ -70,7 +78,8 @@ export default function PacePage() {
               placeholder="Ex: 10"
               required
             />
-          </label>
+            <span className="text-xs text-gray-600 mt-1">Preencha com a distância total percorrida, em quilômetros. Exemplo: 10</span>
+          </div>
           <button type="submit" className="w-full py-3 px-6 rounded-xl bg-blue-800 hover:bg-blue-900 text-white font-bold text-lg shadow-md transition-all mt-2" disabled={loading}>
             {loading ? "Calculando..." : "Calcular Pace"}
           </button>

@@ -42,10 +42,16 @@ export default function VO2Page() {
     <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-900 via-blue-700 to-green-400 p-4">
       <div className="bg-white/90 rounded-2xl shadow-2xl p-8 max-w-lg w-full flex flex-col items-center">
         <h1 className="text-3xl font-extrabold text-blue-900 mb-2 tracking-tight text-center">Calculadora de VO₂ Máximo (Cooper)</h1>
+        <p className="text-gray-700 text-center mb-4">
+          Informe a distância total percorrida (em metros) durante o teste de Cooper.<br/>
+          <span className="font-semibold">Fórmula:</span> <span className="font-mono">VO₂ Máx = (Distância - 504,9) ÷ 44,73</span><br/>
+          O resultado será exibido em mililitros por quilo por minuto (ml/kg/min).
+        </p>
         <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-full">
-          <label className="flex flex-col text-left">
-            Distância total (em metros):
+          <div className="flex flex-col text-left">
+            <label htmlFor="distancia" className="font-semibold mb-1 text-gray-800">Distância total (em metros):</label>
             <input
+              id="distancia"
               type="number"
               min="0"
               step="any"
@@ -55,7 +61,8 @@ export default function VO2Page() {
               placeholder="Ex: 2400"
               required
             />
-          </label>
+            <span className="text-xs text-gray-600 mt-1">Preencha com a distância total percorrida no teste, em metros. Exemplo: 2400</span>
+          </div>
           <button type="submit" className="w-full py-3 px-6 rounded-xl bg-green-700 hover:bg-green-800 text-white font-bold text-lg shadow-md transition-all mt-2" disabled={loading}>
             {loading ? "Calculando..." : "Calcular VO₂ Máximo"}
           </button>
