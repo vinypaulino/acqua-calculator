@@ -3,7 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import VO2Page from "../app/vo2/page";
 
 // Mock next/link to avoid errors in test environment
-jest.mock("next/link", () => ({ children }: any) => children);
+jest.mock("next/link", () => ({ children }: unknown) => children);
 
 describe("Calculadora de VO₂ Máximo (Cooper) UI", () => {
   beforeEach(() => {

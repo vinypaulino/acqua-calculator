@@ -12,7 +12,8 @@ export async function POST(request: Request) {
     const vo2 = controller.calcularVO2Cooper(distanceMeters);
     const result = VO2Presenter.present(vo2);
     return NextResponse.json({ vo2: result });
-  } catch (e: any) {
-    return NextResponse.json({ error: e.message }, { status: 500 });
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : String(e);
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 } 

@@ -3,7 +3,7 @@ import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import PacePage from "../app/pace/page";
 
 // Mock next/link to avoid errors in test environment
-jest.mock("next/link", () => ({ children }: any) => children);
+jest.mock("next/link", () => ({ children }: unknown) => children);
 
 describe("Calculadora de Pace UI", () => {
   beforeEach(() => {

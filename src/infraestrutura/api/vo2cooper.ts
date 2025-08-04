@@ -15,7 +15,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const vo2 = controller.calcularVO2Cooper(distanceMeters);
     const result = VO2Presenter.present(vo2);
     return res.status(200).json({ vo2: result });
-  } catch (e: any) {
-    return res.status(500).json({ error: e.message });
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : String(e);
+    return res.status(500).json({ error: message });
   }
 } 

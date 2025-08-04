@@ -18,7 +18,8 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     const pace = controller.calcularPace(timeMinutes, distanceKm);
     const result = PacePresenter.present(pace);
     return res.status(200).json({ pace: result });
-  } catch (e: any) {
-    return res.status(500).json({ error: e.message });
+  } catch (e: unknown) {
+    const message = e instanceof Error ? e.message : String(e);
+    return res.status(500).json({ error: message });
   }
 } 
