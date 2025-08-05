@@ -9,6 +9,6 @@ describe("Tela inicial (Home)", () => {
     expect(screen.getByText(/Bem-vindo ao/i)).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Calculadora de Pace/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Calculadora de VO₂ Máximo/i })).toBeInTheDocument();
-    expect(screen.getByText(/Produzido por Vitor Zil/i)).toBeInTheDocument();
+    expect(screen.getByText(/Produzido por Vitor Zilz/i)).toBeInTheDocument();
   });
 }); 

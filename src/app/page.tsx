@@ -24,7 +24,7 @@ export default function Home() {
           </Link>
         </div>
         <div className="mt-8 text-xs text-gray-500 text-center">
-          <span>Versão 1.0.0 &copy; {new Date().getFullYear()}<br/>Produzido por Vitor Zil</span>
+          <span>Versão 1.0.0 &copy; {new Date().getFullYear()}<br/>Produzido por Vitor Zilz</span>
         </div>
       </div>
     </main>
