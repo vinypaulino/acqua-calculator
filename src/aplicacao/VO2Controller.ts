@@ -1,13 +1,13 @@
-import { CalculateVO2CooperUseCase } from '../dominio/CalculateVO2CooperUseCase';
+import { CalculateVO2JackDanielsUseCase } from '../dominio/CalculateVO2CooperUseCase';
 
 export class VO2Controller {
-  private calculateVO2CooperUseCase: CalculateVO2CooperUseCase;
+  private calculateVO2JackDanielsUseCase: CalculateVO2JackDanielsUseCase;
 
   constructor() {
-    this.calculateVO2CooperUseCase = new CalculateVO2CooperUseCase();
+    this.calculateVO2JackDanielsUseCase = new CalculateVO2JackDanielsUseCase();
   }
 
-  calcularVO2Cooper(distanceMeters: number) {
-    return this.calculateVO2CooperUseCase.execute(distanceMeters);
+  calcularVO2JackDaniels(distanceMeters: number, timeMinutes: number) {
+    return this.calculateVO2JackDanielsUseCase.execute(distanceMeters, timeMinutes);
   }
 } 
