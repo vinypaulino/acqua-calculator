@@ -34,7 +34,7 @@ export default function VO2Page() {
         setResult(data.vo2);
       }
     } catch (e) {
-      setError("Erro de conexão com o servidor.");
+      setError("Erro de conexão com o servidor." + e);
     } finally {
       setLoading(false);
     }

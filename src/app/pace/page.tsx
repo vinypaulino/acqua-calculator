@@ -34,7 +34,7 @@ export default function PacePage() {
         setResult(data.pace);
       }
     } catch (e) {
-      setError("Erro de conexão com o servidor.");
+      setError("Erro de conexão com o servidor." + e);
     } finally {
       setLoading(false);
     }
